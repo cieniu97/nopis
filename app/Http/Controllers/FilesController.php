@@ -62,7 +62,7 @@ class FilesController extends Controller
           'przedmiot' => 'required',
           'semestr' => 'required',
           'rodzaj' => 'required',
-          'files.*' => ['mimes:jpeg,jpg,doc,docx,odt','max:5000','required']
+          'files.*' => ['mimes:jpeg,jpg,doc,docx,odt,pdf,txt','max:5000','required']
 
       ]);
 
