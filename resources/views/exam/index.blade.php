@@ -5,147 +5,136 @@ $domy=App\Dom::all();
 $uczelnie = $domy->unique('uczelnia')->pluck('uczelnia');
 @endphp
 
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title')
 Egzaminy
 @endsection
 @section('content')
-<div id="exams">
+<div class="container">
+  <div class="row ">
+    <div class="col-xs-12 lista-head">
+      <h1 style="color:white">Wszystkie egzaminy</h1>
+      <a href="/exam/create" type="button" class="dodaj" name="button" >Dodaj</a>
+    </div>
+
+  </div>
+  <div class="row from-wrap">
+
+    <div class="col-xs-12">
+      <form class="wyszukiwanie-form" action="/exam/search" method="post">
+
+          @csrf
+
+          <div class="input-wrap">
+              <label for="uczelania">Uczelnia</label>
+              <select class="" id="uczelnia">
+                  @forelse ($uczelnie ?? '' as $uczelnia )
+                  <option class="opcja" value="{{$uczelnia}}">{{$uczelnia}}</option>
+                  @empty
+                  @endforelse
+              </select>
+
+          </div>
+
+          <div class="input-wrap">
+              <label for="kierunki">Kierunek</label>
+              <select class="" name="dom_id" id="kierunki">
+
+              </select>
+
+          </div>
+
+          <div class="input-wrap">
+              <label for="semestr">Semestr</label>
+              <select type="text" name="semestr">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+              </select>
+          </div>
+
+          {{-- <div class="input-wrap">
+              <label for="sort">Sortuj</label>
+              <select type="text" name="sort">
+                  <option value="created_at">Domyślnie</option>
+                  <option value="nazwa">Nazwa</option>
+                  <option value="data">Data</option>
+                  <option value="przedmiot">Przedmiot</option>
+                  <option value="rodzaj">Rodzaj</option>
+              </select>
+          </div>
+
+          <div class="input-wrap">
+              <label for="rosmal">Rosnąco / Malejąco</label>
+              <select type="text" name="rosmal">
+                  <option value="desc">Malejąco</option>
+                  <option value="asc">Rosnąco</option>
 
 
-    <div class="tabela">
+              </select>
+          </div> --}}
+
+          <button type="submit" name="button" style="width:30%;">Szukaj</button>
+
+      </form>
+    </div>
+  </div>
 
 
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="komurka-wrap komurka-opis-wrap">
         <div class="tabela-opis komurka">Nazwa</div>
         <div class="tabela-opis komurka">Data</div>
         <div class="tabela-opis komurka">Przedmiot</div>
         <div class="tabela-opis komurka">Rodzaj</div>
         <div class="tabela-opis komurka">Semestr</div>
 
+      </div>
+
+      @forelse ($exams as $exam)
+      <div class="komurka-wrap">
 
 
-        @forelse ($exams as $exam)
 
+          <div class="komurka">
+              {{$exam->nazwa}}
+          </div>
 
-        <div class="komurka">
-            {{$exam->nazwa}}
-        </div>
+          <div class="komurka">
 
-        <div class="komurka">
+              {{$exam->data}}
+          </div>
 
-            {{$exam->data}}
-        </div>
+          <div class="komurka">
 
-        <div class="komurka">
-            <div class="data-opis">
-                Przedmiot:
-            </div>
-            {{$exam->przedmiot}}
-        </div>
+              {{$exam->przedmiot}}
+          </div>
 
-        <div class="komurka">
-            <div class="data-opis">
-                Rodzaj:
-            </div>
-            {{$exam->rodzaj}}
-        </div>
+          <div class="komurka">
 
-        <div class="komurka">
-            <div class="data-opis">
-                Semestr:
-            </div>
-            {{$exam->semestr}}
-        </div>
+              {{$exam->rodzaj}}
+          </div>
 
+          <div class="komurka">
 
-        @empty
+              {{$exam->semestr}}
+          </div>
 
-        @endforelse
+      </div>
+      @empty
+        <h1 class="nie-ma" >Niestety nie ma żadnych egzaminów. Bądź pierwszą osobą która doda!</h1>
+      @endforelse
 
     </div>
-
-    <div class="formularz">
-        <form class="" action="/nopis/public/exam/search" method="post">
-
-            @csrf
-
-            <div class="input-wrap">
-                <label for="uczelania">Uczelnia</label>
-                <select class="" id="uczelnia">
-                    @forelse ($uczelnie ?? '' as $uczelnia )
-                    <option class="opcja" value="{{$uczelnia}}">{{$uczelnia}}</option>
-                    @empty
-                    @endforelse
-                </select>
-
-            </div>
-
-
-
-
-
-            <br>
-            <div class="input-wrap">
-                <label for="kierunki">Kierunek</label>
-                <select class="" name="dom_id" id="kierunki">
-
-                </select>
-
-            </div>
-
-
-
-
-
-
-
-
-
-            <div class="input-wrap">
-                <label for="semestr">Semestr</label>
-                <select type="text" name="semestr">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
-            </div>
-
-
-            {{-- <div class="input-wrap">
-                <label for="sort">Sortuj</label>
-                <select type="text" name="sort">
-                    <option value="created_at">Domyślnie</option>
-                    <option value="nazwa">Nazwa</option>
-                    <option value="data">Data</option>
-                    <option value="przedmiot">Przedmiot</option>
-                    <option value="rodzaj">Rodzaj</option>
-                </select>
-            </div>
-
-            <div class="input-wrap">
-                <label for="rosmal">Rosnąco / Malejąco</label>
-                <select type="text" name="rosmal">
-                    <option value="desc">Malejąco</option>
-                    <option value="asc">Rosnąco</option>
-
-
-                </select>
-            </div> --}}
-
-
-
-
-            <div class="input-wrap">
-                <button type="submit" name="button" style="width:30%;">Szukaj</button>
-            </div>
-        </form>
-
-    </div>
+  </div>
 </div>
+
+
 
 
 @endsection

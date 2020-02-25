@@ -3,8 +3,8 @@
 
 
 <div class="alert-wrap" onclick='Zamknij();' id="alert-wrap">
-  <div class="alert" style="color:rgb(86, 181, 108);" >
-    <h4 class="alert-heading" style="color:rgb(69, 69, 69);">Zobaczmy co my tu mamy?</h4>
+  <div class="alert"  >
+
     <h3>{{session('message')}}</h3>
     <hr>
 

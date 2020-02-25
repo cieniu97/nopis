@@ -7,7 +7,7 @@
 
   </div>
   <div class="">
-    <a href="/nopis/public/" style="color:white; padding: 10px;background-color:rgb(230, 94, 94); border-radius:7px; text-decoration:none;">Wróć na stronę główną</a>
+    <a href="/" style="color:white; padding: 10px;background-color:rgb(230, 94, 94); border-radius:7px; text-decoration:none;">Wróć na stronę główną</a>
   </div>
 </div>
 @endsection

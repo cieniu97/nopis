@@ -12,9 +12,5 @@
 
     </div>
   </div>
-  <div class="foto">
-
-        <h1 style="">Wiedza o krok bliżej dzięki technologi</h1>
-
-  </div>
-  </div>
+  
+</div>

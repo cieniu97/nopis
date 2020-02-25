@@ -12,877 +12,380 @@ html {
     padding: 0;
     margin: 0;
     font-family: 'Sulphur Point', sans-serif;
-    background-color: $greenish;
     min-height: 100vh;
+    background-color: $dark;
 }
 
-nav {
-    min-height: 6vh;
-    max-width: 100%;
-    background-color: white;
+.container-fluid {
+    overflow: hidden;
+}
+
+.intro-wrap {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    align-items: top;
     flex-direction: row;
+}
+
+.intro-image {}
+
+.min-menu {
+    height: 10vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-right: 5vw;
+    @include rwd(560) {
+        flex-direction: column;
+        min-height: 150px;
+        padding-left: 0;
+        padding-right: 0;
+    };
+
+    .logo {
+        font-family: 'Reenie Beanie', cursive;
+        color: white;
+        @include flexy();
+        flex-direction: row;
+        font-size: 55px;
+        @include rwd(560) {
+            font-size: 30px;
+        };
+
+        img {
+            height: 55px;
+            @include rwd(400) {
+                height: 30px;
+            };
+        }
+
+        .logo-text {
+            font-size: 40px;
+            color: $gray;
+        }
+    }
 
     a {
         text-decoration: none;
-        color: $gray;
+        color: white;
+        margin-left: 15px;
 
         &:hover {
-            color: $greenish;
+            color: $orange;
         }
     }
 
-    .logo {
-        @include flexy();
-        flex-direction: row;
-        height: 100%;
-        font-family: 'Reenie Beanie', cursive;
-
-        h1 {
-            display: inline;
-            margin: 0;
-            padding-left: 5%;
-            font-size: 2rem;
-        }
-
-        img {
-            display: inline;
-            height: 32px;
-        }
+    .min-menu-przyciski {
+        @include rwd(560) {
+            margin-top: 15px;
+        };
     }
 
-    .menu {}
-
-    .nav-user {
-        @include rwd(420) {
-            padding: 2%;
-        }
-
-        form {}
-
-        button {
-            display: inline;
-            background-color: $blueish;
-            border: none;
-            padding: 10px;
-            border-radius: 7px;
-            margin: 0;
-            color: white;
-            @include rwd(660) {
-                background-color: white;
-                color: $blueish;
-            }
-
-            &:hover {
-                background-color: rgb(235, 235, 235);
-                color: $greenish;
-                cursor: pointer;
-            }
-        }
-
-        .nick {
-            display: inline;
-            color: $gray;
-            @include rwd(660) {
-                color: white;
-            }
-        }
-    }
-    @include rwd(660) {
-        background-color: $blueish;
+    .min-menu-register {
+        background-color: $blue;
         color: white;
-
-        a {
-            color: white;
-        }
+        padding: 15px;
+        border-radius: 12px;
     }
-    @include rwd(420) {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 2%;
+    .min-menu-auth{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      a, .nick{
+        margin-left:10px;
+        margin-right: 10px;
+      }
+      .nick{
+        color: white;
+        @include rwd(560){
+          display: none;
+        }
+      }
     }
 }
 
-#auth {
-    font-size: 1.5rem;
-    @include rwd(1600) {
-        font-size: 1.2rem;
-    }
-    @include rwd(800) {
-        font-size: 1rem;
-    }
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: minmax(94vh,max-content);
-    grid-template-areas: "instr photo";
-    @include rwd(1200) {
-        grid-template-columns: 1fr;
-        grid-template-rows: min-content, min-content;
-        grid-template-areas: "instr" "photo";
+
+.portal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    color: white;
+    font-family: 'Amiri', serif;
+    font-size: 40px;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    text-shadow: 2px 2px 20px rgb(69, 69, 69);
+    color: $orange;
+    margin: auto;
+    @include rwd(750) {
+        font-size: 25px;
+    };
+}
+
+.opis {
+    min-height: 90vh;
+    padding-bottom: 50px;
+    background-image: url("/layout/pensil.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 5vh;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    @include rwd(750) {
+        font-size: 16px;
+    };
+
+    h1 {
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
-    .photo {
-        grid-area: photo;
-        background-image: url("/nopis/storage/app/public/layout/notatki.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        @include flexy();
+    .opis-tekst {
+        color: white;
+        width: 40vw;
+        @include rwd(1400) {
+            width: 80vw;
+        };
 
-        form {
+        hr {
+            border: solid 3px $orange;
+        }
+    }
+
+    .instrukcja {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 40vw;
+        @include rwd(1400) {
+            width: 80vw;
+        };
+
+        .obrazek {
+            margin-top: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            width: 20vw;
-            min-height: 50vh;
-            background-color: rgba(#464646, 0.95);
-            padding: 10%;
-            -webkit-box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
-            box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
+            flex-direction: row;
+        }
+
+        .obrazek-tekst {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 350px;
+            padding: 20px;
+            background-color: $dark;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-top-left-radius: 12px;
+            @include rwd(580) {
+                width: 65%;
+            };
+        }
+
+        .obrazek-zdj {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 60px;
+            padding: 20px;
+            background-color: $orange;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+            @include rwd(580) {
+                width: 35%;
+            };
+
+            img {
+                height: 80px;
+            }
+        }
+    }
+}
+
+.photo {
+    @include flexy();
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 35vw;
+        min-height: 50vh;
+        background-color: rgba(#464646, 0.95);
+        padding: 1vw;
+        -webkit-box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
+        box-shadow: 0 10px 23px -3px rgba(0,0,0,0.75);
+        border-radius: 7px;
+        color: $gray;
+        @include rwd(1200) {
+            width: 50vw;
+            padding: 5%;
+            margin: 5%;
+        }
+        @include rwd(800) {
+            width: 70vw;
+        }
+        @include rwd(400) {
+            width: 80vw;
+        }
+
+        input {
+            width: 100%;
+            padding: 4%;
+            margin: 3%;
+            height: 2rem;
+            border: solid 2px white;
             border-radius: 7px;
+
+        }
+        /* Reset Select */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: #ffffff;
+            background-image: none;
+        }
+        /* Remove IE arrow */
+        select::-ms-expand {
+            display: none;
+        }
+        /* Custom Select */
+        .select {
+            position: relative;
+            display: flex;
+            flex-shrink: 0;
+            width: 100%;
+            height: 5rem;
+            margin: 3%;
+            line-height: 5rem;
+            background: #ffffff;
+            overflow: hidden;
+            border-radius: 7px;
+
             @include rwd(1200) {
-                width: 50vw;
-                padding: 5%;
-                margin: 5%;
+                height: 3rem;
+                line-height: 3rem;
             }
+        }
+
+        select {
+            flex: 1;
+            padding: 0 0.5em;
+            cursor: pointer;
+        }
+        /* Arrow */
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: rgb(86, 131, 181);
+            color: white;
+            cursor: pointer;
+            pointer-events: none;
+            -webkit-transition: 0.25s all ease;
+            -o-transition: 0.25s all ease;
+            transition: 0.25s all ease;
+        }
+        /* Transition */
+        .select:hover::after {
+            color: $redish;
+        }
+
+        .opcja {
+            width: 50%;
+            padding: 4%;
+            margin: 5%;
+        }
+
+        .zarejestruj {
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: $blueish;
+            width: 50%;
+            border: none;
+            color: white;
+            padding: 2%;
+            border-radius: 7px;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            color: $greenish;
+            background-color: white;
+            -webkit-transition: 0.5s all ease;
+            -o-transition: 0.5s all ease;
+            transition: 0.5s all ease;
+        }
+
+        .remember-wrap {
+            padding: 2%;
+            width: 100%;
+            @include flexy();
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
             @include rwd(800) {
-                width: 70vw;
-            }
-            @include rwd(400) {
-                width: 80vw;
+                flex-direction: column;
             }
 
             input {
-                width: 100%;
-                padding: 4%;
-                margin: 3%;
-                height: 2rem;
-                border: solid 2px white;
-                border-radius: 7px;
-                @include rwd(1200) {
-                    padding: 2%;
-                }
-            }
-            /* Reset Select */
-            select {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                -ms-appearance: none;
-                appearance: none;
-                outline: 0;
-                box-shadow: none;
-                border: 0 !important;
-                background: #ffffff;
-                background-image: none;
-            }
-            /* Remove IE arrow */
-            select::-ms-expand {
-                display: none;
-            }
-            /* Custom Select */
-            .select {
-                position: relative;
-                display: flex;
-                flex-shrink: 0;
-                width: 100%;
-                height: 3rem;
-                margin: 3%;
-                line-height: 3rem;
-                background: #ffffff;
-                overflow: hidden;
-                border-radius: 7px;
-                @include rwd(1200) {
-                    height: 2rem;
-                    line-height: 2rem;
-                }
-            }
-
-            select {
-                flex: 1;
-                padding: 0 0.5em;
-                cursor: pointer;
-            }
-            /* Arrow */
-            .select::after {
-                content: '\25BC';
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 0 1em;
-                background: rgb(86, 131, 181);
-                color: white;
-                cursor: pointer;
-                pointer-events: none;
-                -webkit-transition: 0.25s all ease;
-                -o-transition: 0.25s all ease;
-                transition: 0.25s all ease;
-            }
-            /* Transition */
-            .select:hover::after {
-                color: $redish;
-            }
-
-            .opcja {
-                width: 50%;
-                padding: 4%;
-                margin: 5%;
-            }
-
-            .zarejestruj {
-                color: white;
-                font-weight: bold;
-            }
-
-            .btn {
-                background-color: $blueish;
-                width: 50%;
-                border: none;
-                color: white;
-                padding: 5%;
-                border-radius: 7px;
-            }
-
-            .btn:hover {
-                cursor: pointer;
-                color: $greenish;
-                background-color: white;
-                -webkit-transition: 0.5s all ease;
-                -o-transition: 0.5s all ease;
-                transition: 0.5s all ease;
-            }
-
-            .remember-wrap {
-                padding: 2%;
-                width: 100%;
-                @include flexy();
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-around;
-                @include rwd(800) {
-                    flex-direction: column;
-                }
-
-                input {
-                    width: auto;
-                    padding: 0;
-                    margin: 0;
-                    height: auto;
-                }
-
-                a {
-                    color: rgb(235, 99, 99);
-                    text-decoration: none;
-
-                    &:hover {
-                        color: white;
-                    }
-                }
+                width: auto;
+                padding: 0;
+                margin: 0;
+                height: auto;
             }
 
             a {
-                font-size: 1.3rem;
-                padding: 4%;
-                color: white;
+                color: rgb(235, 99, 99);
                 text-decoration: none;
-                @include rwd(1200) {
-                    font-size: 1rem;
-                }
 
                 &:hover {
-                    color: rgb(230, 137, 106);
+                    color: white;
                 }
             }
         }
-    }
 
-    .instr {
-        grid-area: instr;
-        background: rgb(242,205,187);
-        background: linear-gradient(90deg, rgba(242,205,187,1) 0%, rgba(251,221,93,1) 50%, rgba(116,255,132,1) 100%);
-        @include flexy();
-        flex-direction: column;
-        justify-content: space-around;
-        @include rwd(1200) {}
-        @include rwd(800) {
-            padding-top: 10%;
-        }
-        @include rwd(400) {
-            padding-top: 2%;
-            padding-bottom: 2%;
-        }
-
-        .tut {
-            width: 40vw;
+        a {
+            font-size: 1.3rem;
+            padding: 4%;
+            color: white;
+            text-decoration: none;
             @include rwd(1200) {
-                width: 60vw;
+                font-size: 1rem;
             }
-            @include rwd(800) {
-                width: 80vw;
-            }
-            @include rwd(400) {}
-            min-height: 30vh;
-            padding: 2vh 5vw;
-            color: white;
-            background-color: $redish;
-            border-radius: 7px;
-            color: white;
-            font-family: 'Sulphur Point', sans-serif;
-
-            .slog {
-                font-size: 3rem;
-                color: white;
-                text-shadow: 0 3px 6px rgb(0, 0, 0);
-                font-family: 'Alfa Slab One', cursive;
-                text-align: left;
-                @include rwd(1600) {
-                    font-size: 2.5rem;
-                }
-                @include rwd(800) {
-                    font-size: 2rem;
-                }
-            }
-
-            h2 {
-                font-size: 2rem;
-                color: white;
-                text-shadow: 0 3px 6px rgb(0, 0, 0);
-                font-family: 'Alfa Slab One', cursive;
-                text-align: left;
-                @include rwd(1600) {
-                    font-size: 1.5rem;
-                }
-                @include rwd(800) {
-                    font-size: 1.2rem;
-                }
-            }
-        }
-
-        .tut-wrap {
-            display: none;
-            @include rwd(400) {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-direction: row;
-                padding: 3%;
-                margin: 2%;
-                background-color: $greenish;
-            }
-
-            img {
-                height: 24px;
-            }
-        }
-
-        .obrazki {
-            grid-area: obrazki;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            flex-direction: row;
-            width: 50vw;
-            min-height: 20vh;
-            @include rwd(1200) {
-                width: 70vw;
-            }
-            @include rwd(800) {
-                width: 90vw;
-            }
-            @include rwd(400) {
-                display: none;
-            }
-
-            .obrazek-wrap {
-                height: 100%;
-                width: 30%;
-                @include rwd(800) {}
-                font-family: 'Sulphur Point', sans-serif;
-                border-radius: 7px;
-            }
-
-            .obrazek-tekst {
-                padding: 5%;
-                border-top-right-radius: 7px;
-                border-top-left-radius: 7px;
-                @include flexy();
-                background-color: $redish;
-                color: white;
-                height: 20%;
-            }
-
-            .obrazek {
-                padding: 5%;
-                border-bottom-right-radius: 7px;
-                border-bottom-left-radius: 7px;
-                @include flexy();
-                height: 60%;
-                background-color: $greenish;
-
-                img {
-                    height: 70%;
-                    @include rwd(1600) {
-                        height: 64px;
-                    }
-                }
-            }
-        }
-    }
-}
-
-#home {
-    display: grid;
-    color: white;
-    min-height: 94vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3,minmax(min-content,1fr));
-    grid-template-areas: "notatki udos" "egzaminy twoje" "footer footer";
-    @include rwd(1200) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5,min-content);
-        grid-template-areas: "notatki" "egzaminy" "twoje" "udos" "footer";
-    }
-
-    .egzaminy,
-    .notatki {
-        grid-area: notatki;
-        background-color: $greenish;
-        padding-left: 5%;
-        padding-right: 5%;
-        width: 90%;
-        @include rwd(660) {
-            padding: 0;
-            width: 100%;
-            max-width: 100vw;
-        }
-
-        form {
-            padding: 3%;
-            width: 94%;
-            @include rwd(660) {
-                max-width: 100vw;
-            }
-            background-color: rgb(255, 255, 255);
-            color: $gray;
-            @include rwd(660) {
-                background-color: $greenish;
-                color: white;
-            }
-            @include flexy();
-            align-items: flex-start;
-
-            .nazwa {
-                input {}
-            }
-
-            input {
-                padding: 1%;
-                @include rwd(420) {
-                    width: 100%;
-                }
-            }
-
-            select {
-                padding: 1%;
-                max-width: 100%;
-                @include rwd(420) {
-                    width: 100%;
-                }
-            }
-
-            .area-wrap {
-                padding: 1%;
-                width: 100%;
-            }
-
-            textarea {
-                max-width: 100%;
-            }
-
-            button {
-                background-color: $blueish;
-                color: white;
-                border: none;
-                border-radius: 7px;
-                padding: 1%;
-            }
-        }
-
-        .wurp {
-            width: 100%;
-            @include flexy();
-            flex-direction: row;
-            justify-content: space-around;
-            @include rwd(660) {
-                flex-direction: column;
-                align-items: flex-start;
-                max-width: 100vw;
-            }
-
-            .left {
-                width: 50%;
-                @include rwd(420) {
-                    width: 100%;
-                }
-            }
-
-            .right {
-                width: 50%;
-                @include rwd(420) {
-                    width: 100%;
-                }
-            }
-
-            .input-wrap {
-                padding: 2%;
-                @include flexy();
-                align-items: flex-start;
-            }
-        }
-    }
-
-    .notatki {
-        padding-top: 2%;
-        @include rwd(660) {
-            padding: 0;
-        }
-    }
-
-    .twoje {
-        grid-area: twoje;
-        background-color: $redish;
-        padding-left: 5%;
-        padding-right: 5%;
-
-        .opis {
-            background-color: white;
-            padding: 2%;
-            color: $gray;
-            display: none;
-        }
-    }
-
-    .egzaminy {
-        grid-area: egzaminy;
-        background-color: $greenish;
-    }
-
-    .udos {
-
-        background-color: $redish;
-        grid-area: udos;
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .egzaminy,
-    .udos {
-        padding-bottom: 2%;
-    }
-
-    .twoje,
-    .udos {
-        @include rwd(660) {
-            padding: 0;
-            background-color: white;
-        }
-    }
-
-    .linia {
-        background-color: white;
-        color: $gray;
-
-        &:hover {
-            background-color: $greenish;
-            cursor: pointer;
-        }
-
-        td {
-            padding: 1%;
-            word-break: break-all;
-        }
-    }
-
-    .naglowek {
-        @include rwd(660) {
-            padding: 2%;
-            color: $gray;
-            background-color: white;
-        }
-    }
-
-    .recent {
-        display: flex;
-        @include rwd(660) {
-            display: none;
-        }
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: white;
-        color: $gray;
-        margin-bottom: 1%;
-
-        .recent-nazwa {
-            padding: 2%;
-        }
-
-        .recent-in {
-            padding: 2%;
-        }
-
-        .recent-opis {
-            display: none;
-        }
-    }
-
-    .recent-mobile {
-        display: none;
-        @include rwd(660) {
-            display: flex;
-        }
-        justify-content: space-between;
-        margin-bottom: 1%;
-        flex-direction: column;
-        border: solid 2px white;
-        color: white;
-        padding: 2%;
-
-        .recent-mobile-strip {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 2%;
-            background-color: $redish;
-            color: white;
-        }
-
-        .recent-mobile-in {
-            padding: 2%;
-            background-color: $blueish;
-            color: white;
-        }
-    }
-}
-// Ikony
-// <div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-// <div>Icons made by <a href="https://www.flaticon.com/authors/zlatko-najdenovski" title="Zlatko Najdenovski">Zlatko Najdenovski</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-// <div>Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
-#exams,
-#files {
-    display: grid;
-    color: $gray;
-    grid-template-columns: minmax(min-content,3fr) minmax(min-content,1fr);
-    grid-template-areas: "tabela formularz";
-    @include rwd(1100) {
-        grid-template-columns: 100vw;
-        grid-template-rows: repeat(2,minmax(min-content));
-        grid-template-areas: "formularz" "tabela";
-    }
-
-    .formularz {
-        color: white;
-        background-color: $redish;
-        grid-area: formularz;
-        padding: 5%;
-
-        .input-wrap {
-            padding: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            input,
-            select {
-                padding: 2%;
-            }
-        }
-
-        button {
-            display: inline;
-            background-color: $blueish;
-            border: none;
-            padding: 2%;
-            border-radius: 7px;
-            margin: 0;
-            color: white;
 
             &:hover {
-                background-color: rgb(235, 235, 235);
-                color: $greenish;
-                cursor: pointer;
+                color: rgb(230, 137, 106);
             }
-        }
-    }
-
-    .tabela,
-    .tabela-files {
-        background-color: $greenish;
-        grid-area: tabela;
-        display: grid;
-        grid-template-columns: repeat(5,minmax(min-content,3fr));
-        grid-template-rows: minmax(50px);
-        grid-gap: 5px 5px;
-        @include rwd(660) {
-            grid-template-columns: repeat(6,minmax(1fr));
-            grid-gap: 0;
-        }
-        padding: 2%;
-
-        .tabela-szary {
-            background-color: rgb(231, 231, 231);
-        }
-
-        .tabela-head {
-            &:hover {
-                cursor: pointer;
-                background-color: rgb(188, 255, 124);
-            }
-        }
-
-
-    }
-
-    .tabela{
-      .tabela-opis {
-          @include rwd(660) {
-              display: none;
-          }
-      }
-
-      .komurka {
-          background-color: white;
-          padding: 5%;
-          color: $gray;
-          @include rwd(660) {
-              color: white;
-          }
-      }
-
-      .komurka:nth-child(5n+1) {
-          @include rwd(660) {
-              grid-column: 1 / 4;
-              background-color: $redish;
-              margin-top: 10px;
-          }
-      }
-
-      .komurka:nth-child(5n +2) {
-          background-color: rgb(231, 231, 231);
-          @include rwd(660) {
-              background-color: $redish;
-              margin-top: 10px;
-              grid-column: 4 / 7;
-          }
-      }
-
-      .komurka:nth-child(5n+3) {
-          @include rwd(660) {
-              grid-column: 1 / 7;
-              background-color: $blueish;
-          }
-      }
-
-      .komurka:nth-child(5n+4) {
-          background-color: rgb(231, 231, 231);
-          @include rwd(660) {
-              grid-column: 1 / 7;
-              background-color: $blueish;
-          }
-      }
-
-      .komurka:nth-child(5n+5) {
-          @include rwd(660) {
-              grid-column: 1 / 7;
-              background-color: $blueish;
-              margin-bottom: 10px;
-          }
-      }
-
-      .data-opis{
-        display: none;
-        @include rwd(660){
-          display: inline;
-
-        }
-      }
-    }
-
-    .tabela-files {
-        grid-template-columns: repeat(6,minmax(min-content,3fr));
-        .tabela-opis {
-            @include rwd(660) {
-                display: none;
-            }
-        }
-
-        .komurka {
-            background-color: white;
-            padding: 5%;
-            color: $gray;
-            @include rwd(660) {
-                color: white;
-            }
-        }
-
-        .komurka:nth-child(6n+1) {
-            @include rwd(660) {
-                grid-column: 1 / 4;
-                background-color: $redish;
-                margin-top: 10px;
-            }
-        }
-
-        .komurka:nth-child(6n +2) {
-            background-color: rgb(231, 231, 231);
-            @include rwd(660) {
-                background-color: $redish;
-                margin-top: 10px;
-                grid-column: 4 / 7;
-            }
-        }
-
-        .komurka:nth-child(6n+3) {
-            @include rwd(660) {
-                grid-column: 1 / 7;
-                background-color: $blueish;
-            }
-        }
-
-        .komurka:nth-child(6n+4) {
-            background-color: rgb(231, 231, 231);
-            @include rwd(660) {
-                grid-column: 1 / 7;
-                background-color: $blueish;
-            }
-        }
-
-        .komurka:nth-child(6n+5) {
-            @include rwd(660) {
-                grid-column: 1 / 7;
-                background-color: $blueish;
-
-            }
-        }
-
-        .komurka:nth-child(6n+6) {
-            background-color: rgb(231, 231, 231);
-            @include rwd(660) {
-                grid-column: 1 / 7;
-                background-color: $blueish;
-                margin-bottom: 10px;
-            }
-        }
-        .data-opis{
-          display: none;
-          @include rwd(660){
-            display: inline;
-
-          }
         }
     }
 }
@@ -911,8 +414,8 @@ nav {
 }
 
 .footer {
-    grid-area: footer;
-    background-color: rgb(120, 120, 120);
+  margin-top: 50px;
+    background-color: $dark;
     color: white;
     font-size: 18px;
     display: flex;
@@ -960,4 +463,418 @@ nav {
         text-shadow: 2px 2px 10px black;
         font-family: 'Bangers', cursive;
     }
+}
+
+#rodoTarget {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.59);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(69, 69, 69);
+}
+.rodoInside{
+  background-color:white;
+   padding:25px;
+    width:80vw;
+
+    overflow-y: scroll;
+    @include rwd(600){
+      height: 100%;
+    };
+}
+
+
+.egzaminy-zdj, .notes-zdj{
+
+  color: white;
+  min-height: 50vh;
+  background-image: url('/layout/student.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  padding: 5vh 10vw 5vh 10vw;
+  margin-bottom: 50px;
+
+
+
+  .dodaj, .pokaz{
+    display: block;
+    margin-top: 15px;
+    width: 200px;
+    text-align: center;
+    background-color: $orange;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    &:hover {
+
+      cursor: pointer;
+    }
+  }
+  .egzaminy-wrap{
+    min-height: 30vh;
+    background-color: $dark;
+    padding: 25px;
+    border-radius: 12px;
+    width: 35vw;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include rwd(750){
+      border-radius: 0;
+
+    }
+  }
+  .egzamin{
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+
+
+  }
+  .egzamin-nazwa{
+      border-top-left-radius: 5px;
+      border-bottom-left-radius:5px;
+    background-color: $orange;
+    color:white;
+    width: 70%;
+    padding: 15px;
+  }
+  .egzamin-data{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: white;
+    color:$gray;
+    width: 30%;
+    padding: 15px;
+  }
+  .egzamin-download{
+    width: 30%;
+    padding: 15px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form{
+      width: 100%;
+
+    }
+    button{
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: $blue;
+    }
+  }
+  .egzamin-przyciski{
+    text-align:center;
+    a{
+        text-decoration: none;
+    }
+
+    h1{
+      font-size: 45px;
+      text-shadow: 2px 2px 10px black;
+    }
+
+  }
+  .notes-small{
+    display: none;
+  }
+
+  @include rwd(1300){
+    .egzaminy-wrap{
+      width: 50vw;
+    }
+  }
+  @include rwd(900){
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5vh 2vw 0 2vw;
+    
+
+    .egzaminy-wrap{
+      width: 100%;
+      margin-top: 100px;
+      background-color: rgba(#182230, 0.76);
+    }
+    .egzamin-przyciski{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .dodaj, .pokaz{
+      margin-top: 0;
+      width: auto;
+      padding: 10px;
+      font-size: 18px;
+      margin-left: 15px;
+    }
+    .notes-small{
+      display: flex;
+    }
+    .notes-big{
+      display: none;
+    }
+  }
+  @include rwd(430){
+    .egzaminy-wrap{
+      .egzamin{
+        flex-direction: column;
+        .egzamin-nazwa, .egzamin-data, .egzamin-download{
+          width: 100%;
+          border-radius: 0;
+
+        }
+      }
+    }
+
+
+
+  }
+}
+
+.notes-zdj{
+  background-image: url('/layout/blank.jpg');
+}
+.lista-head{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+  h1{
+    display: inline;
+  }
+  .dodaj{
+    text-align: center;
+    background-color: $orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 20%;
+  }
+
+  @include rwd(750){
+    flex-direction: column;
+    .dodaj{
+      width: 50%;
+    }
+  }
+}
+
+.lista-row{
+  width: 70%;
+  margin: auto;
+}
+.add-forms{
+  background-image: url('/layout/man.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form{
+    width: 40vw;
+    background-color: rgba(#182230, 0.96);
+    padding: 65px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color:white;
+    font-size: 17px;
+    -webkit-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.75);
+
+    .input-wrap{
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      label{
+        font-weight: bold;
+      }
+      input,select{
+        color: black;
+        padding: 7px;
+      }
+
+
+    }
+    .pliki{
+      background-color: $orange;
+      margin-bottom: 15px;
+      padding: 7px;
+    }
+    button{
+      width:30%;
+      background-color: $blue;
+      border: none;
+      padding: 7px;
+      &:hover {
+        cursor:pointer;
+      }
+    }
+    textarea{
+      color: black;
+      padding: 7px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    @include rwd(1300){
+      width: 60vw;
+    }
+    @include rwd(7500){
+      width: 80vw;
+    }
+    @include rwd(560){
+      width: 100vw;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.form-wrap{
+  background-color: $dark;
+}
+
+
+.wyszukiwanie-form{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  color:white;
+  .input-wrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 20%;
+    label{
+      font-weight: bold;
+    }
+    input,select{
+      color: black;
+      padding: 7px;
+    }
+
+
+  }
+  button{
+    width:20%;
+    background-color: $blue;
+    border: none;
+    padding: 7px;
+    &:hover {
+      cursor:pointer;
+    }
+  }
+
+  @include rwd(720){
+    flex-direction: column;
+    align-items: center;
+    .input-wrap{
+      width: 80%;
+    }
+
+    button{
+      width: 50%;
+      margin-top: 15px;
+    }
+  }
+  @include rwd(560){
+
+    .input-wrap{
+      width: 100%;
+    }
+    button{
+      width: 80%;
+    }
+  }
+}
+
+.komurka-wrap{
+  background-color: rgb(221, 221, 221);
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px;
+  padding-left: 40px;
+
+
+
+  .komurka{
+    width: 15%;
+
+  }
+  .tabela-opis{
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+  button{
+
+    background-color: $blue;
+    border: none;
+    padding: 7px;
+    color: white;
+    &:hover {
+      cursor:pointer;
+    }
+  }
+
+  @include rwd(750){
+    flex-direction: column;
+    align-items: baseline;
+    .komurka{
+      padding: 10px;
+      width: 100%;
+    }
+  };
+}
+
+.komurka-opis-wrap{
+  background-color: $dark;
+  color: white;
+  @include rwd(750){
+    display: none;
+  };
+}
+
+.nie-ma{
+  text-align: center;
+  background-color:white;
+   padding:20px;
+   color: $dark;
+}
+.nie-ma-home{
+  background-color: $orange;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
 }

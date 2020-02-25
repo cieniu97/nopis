@@ -27,7 +27,8 @@ class HomeController extends Controller
         $recent_files=Files::where('dom_id',auth()->user()->dom_id)->where('semestr',1)->take(10)->latest()->get();
         $upcoming_exams=Exam::where('dom_id',auth()->user()->dom_id)->where('semestr',1)->take(10)->orderBy('data','desc')->get();
 
-
+        $upcoming_exams=[];
+        $recent_files=[];
         return view('home',compact('recent_files','upcoming_exams'));
     }
 }

@@ -13,7 +13,10 @@
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/',function(){
+  return view('intro');
+});
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('dom','DomController');
 
@@ -27,3 +30,4 @@ Route::get('files/download/{id}','FilesController@download');
 Route::post('files/search','FilesController@search');
 
 Route::resource('files','FilesController');
+Route::resource('user','UserController');

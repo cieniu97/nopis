@@ -4,15 +4,101 @@ $przedmioty = $prze->unique('name')->pluck('name');
 
 @endphp
 
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title')
 Home
 @endsection
 @section('content')
 
+<div class="row">
+  <div class="col-xs-12" style="text-align:center;color:white;">
+      <h1>Egzaminy</h1>
+  </div>
+</div>
+<div class="row egzaminy-zdj">
 
-<div class="" id=home>
+
+    <div class="egzamin-przyciski" >
+
+      <a href="/exam/create" class="dodaj">Dodaj</a>
+      <a href="/exam" class="pokaz">Przeglądaj</a>
+    </div>
+
+
+
+    <div class="egzaminy-wrap">
+      <h1 style="text-align:center;">Zbliżajęce się egzaminy</h1>
+
+      @forelse ($upcoming_exams ?? '' as $upcoming_exam)
+
+        <div class="egzamin">
+          <div class="egzamin-nazwa">
+            {{$upcoming_exam->nazwa}}
+          </div>
+          <div class="egzamin-data">
+            {{$upcoming_exam->data}}
+          </div>
+        </div>
+
+
+      @empty
+      Nie masz zbliżających się egzaminów ;)
+      @endforelse
+    </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-12" style="text-align:center;color:white;">
+      <h1>Materiały</h1>
+  </div>
+</div>
+<div class="row notes-zdj">
+
+
+  <div class="egzamin-przyciski " >
+
+    <a href="/files/create" class="dodaj">Dodaj</a>
+    <a href="/files" class="pokaz">Przeglądaj</a>
+  </div>
+
+
+
+    <div class="egzaminy-wrap">
+      <h1 style="text-align:center;">Ostatnio dodane materiały</h1>
+
+      @forelse ($recent_files ?? '' as $recent_file)
+        <div class="egzamin">
+          <div class="egzamin-nazwa">
+            {{$recent_file->nazwa}}
+          </div>
+
+          <div class="egzamin-download">
+            <form class="" action="/files/download/{{$recent_file->id}}" method="get">
+               @csrf
+               <button type="submit" name="button">Pobierz</button>
+           </form>
+          </div>
+        </div>
+
+
+
+
+
+      @empty
+      Nie ma na razie notatek
+      @endforelse
+
+    </div>
+
+
+
+</div>
+
+
+
+{{-- <div class="" id=home>
 
 
 
@@ -25,7 +111,7 @@ Home
 
 
 
-        <form class="" action="/nopis/public/files" method="post" enctype="multipart/form-data">
+        <form class="" action="/files" method="post" enctype="multipart/form-data">
 
             @csrf
             @if (Auth::check())
@@ -110,7 +196,7 @@ Home
                   <div class="recent-in"><div class="recent-opis">Semestr: </div>{{$recent_file->semestr}}</div>
                   <div class="recent-in"><div class="recent-opis">Data: </div>{{$recent_file->data}}</div>
                   <div class="recent-in"><div class="recent-opis">Pliki: </div>
-                  <form class="" action="/nopis/public/files/download/{{$recent_file->id}}" method="get">
+                  <form class="" action="/files/download/{{$recent_file->id}}" method="get">
                      @csrf
                      <button type="submit" name="button">Pobierz</button>
                  </form>
@@ -130,7 +216,7 @@ Home
                   <div class="recent-mobile-in">Semestr: {{$recent_file->semestr}}</div>
                   <div class="recent-mobile-in">Data: {{$recent_file->data}}</div>
                   <div class="recent-mobile-in">Pliki:
-                       <form class="" action="/nopis/public/files/download/{{$recent_file->id}}" method="get">
+                       <form class="" action="/files/download/{{$recent_file->id}}" method="get">
                           @csrf
                           <button type="submit" name="button">Pobierz</button>
                       </form>
@@ -153,7 +239,7 @@ Home
           <h1>Egzaminy</h1>
           Tutaj możesz wprowadzić zbliżające się egzaminy, każdy student z Twojej grupy będzie je widział i nie będzie musiał pytać o to 10 osób ;)
         </div>
-        <form class="" action="/nopis/public/exam" method="post">
+        <form class="" action="/exam" method="post">
 
             @csrf
             @if (Auth::check())
@@ -266,6 +352,6 @@ Home
 
     @include('layouts.footer')
 
-</div>
+</div> --}}
 
 @endsection

@@ -18,7 +18,7 @@ class CreateFilesTable extends Migration
             $table->integer('dom_id');
             $table->integer('user_id');
             $table->string('nazwa');
-            $table->text('path')->default('null');
+            $table->text('path');
             $table->date('data');
             $table->string('przedmiot');
             $table->string('rodzaj');

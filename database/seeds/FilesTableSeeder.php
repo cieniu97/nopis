@@ -33,6 +33,7 @@ class FilesTableSeeder extends Seeder
            'nazwa' => Str::random(10),
            'data' => $randomDate,
            'przedmiot' => $subjects[rand(0,$subject_n-1)]->name,
+           'path' => 'example',
            'rodzaj' => $rodzaj[rand(0,3)],
            'semestr' => rand(1,8)
 

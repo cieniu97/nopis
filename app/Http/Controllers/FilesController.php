@@ -24,7 +24,7 @@ class FilesController extends Controller
      */
     public function index($message=null)
     {
-      $files=Files::orderBy('data','desc')->get();
+      $files=Files::orderBy('data','desc')->where('dom_id',auth()->user()->dom_id)->get();
       return view('files.index',compact('files','message'));
     }
 
@@ -95,7 +95,7 @@ class FilesController extends Controller
 
 
       $message="Społeczność studentów dziękuje za Twój wkład! Odwiedź zakładkę notatki aby przeglądać dostępne materiały.";
-       return redirect()->back()->with('message', $message);
+      return redirect()->back()->with('message', $message);
     }
 
     /**
@@ -151,23 +151,15 @@ class FilesController extends Controller
 
       array_pop($files);
 
-
       if(count($files)>1){
-
-
-
 
 
         $zip = new ZipArchive;
         $fileName = Str::random(25).'.zip';
 
-        if ($zip->open(storage_path($fileName), ZipArchive::CREATE) === TRUE)
-        {
+        if ($zip->open(storage_path($fileName), ZipArchive::CREATE) === TRUE){
 
-
-
-          $zz=0;
-
+            $zz=0;
 
             foreach ($files as $file) {
 
@@ -178,21 +170,21 @@ class FilesController extends Controller
 
             }
 
-
-              $zip->close();
-
-
+            $zip->close();
 
         }
 
         return response()->download(storage_path($fileName));
-        }
-        elseif (count($files)==1) {
-          return Storage::download($files[0]);
-        }
-        else{
-          return back();
-        }
+
+      }
+
+      elseif (count($files)==1) {
+        return Storage::download($files[0]);
+      }
+      else{
+        $message="Błąd pobierania. Napisz nam maila na nopis.problem@gmail.com";
+        return back()->with('message', $message);
+      }
 
 
 

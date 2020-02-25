@@ -19,8 +19,8 @@ class ExamController extends Controller
     public function index()
     {
 
-        $exams=Exam::orderBy('data','desc')->get();
-
+        $exams=Exam::orderBy('data','desc')->where('dom_id',auth()->user()->dom_id)->get();
+      
         return view('exam.index', compact('exams'));
     }
 
@@ -31,7 +31,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+      return view('exam.create');
     }
 
     /**

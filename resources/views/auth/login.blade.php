@@ -9,7 +9,8 @@
 @section('title')
 Login
 @endsection
-@section('form')
+
+@section('content')
 
   <div class="photo">
     <form method="POST" action="{{ route('login') }}">
@@ -29,8 +30,9 @@ Login
                         Zapamiętaj mnie
                     </label>
                   </div>
-                  
+
                 </div>
+                <a href="/password/reset">Zresetuj hasło</a>
             <button type="submit" class="btn">
                 {{ __('Login') }}
             </button>

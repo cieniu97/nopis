@@ -14,13 +14,13 @@ class DomTableSeeder extends Seeder
 
 
       $kierunki=[
-        'ekonomiczno-prawny',
-        'finanse i rachunkowość',
-        'zarządzanie',
-        'informatyka i ekonometria',
-        'gospodarka nieruchomościami',
+        'Ekonomiczno-prawny',
         'Informatyka w biznesie',
-        'przedsiębiorczość i inwestycje'
+        'Finanse i rachunkowość',
+        'Zarządzanie',
+        'informatyka i ekonometria',
+        'Gospodarka nieruchomościami',
+        'Przedsiębiorczość i inwestycje'
         ];
 
       $jezyki=[
