@@ -19,7 +19,7 @@
             <div class="min-menu-auth">
               <a style="" href="/home">Home</a>
 
-              <a style="" href="/exam">Egazminy</a>
+              <a style="" href="/exam">Egzaminy</a>
 
               <a style="" href="/files">Notatki</a>
               <a href="/user">{{auth()->user()->name}}</a>
